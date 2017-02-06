@@ -61,11 +61,13 @@ xtest = dataVar(:, 1, 8);
 xtest = transpose(xtest(:));
 
 Ytestvar = new_classifier(xtest, mdata8, mdata5);
+Yourtest = test_classifier(xtest, mdata8, mdata5);
+
 %% kfold validation error
 
 
 avg_errorB = kFoldValidationNewClassifier(data5,data8,5);
-
+avg_errorO = kFoldValidationOurClassifier(data5,data8,5);
 %% Attempt to improve the error
 
 dataAndVar  = cat(1,normalisedData,dataVar);
