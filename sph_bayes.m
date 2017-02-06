@@ -9,8 +9,8 @@ py2 = sum(Y==-1)/size(Y,1);
 
 
 
-pxnew1= mvnpdf(Xtest,mu1MLE,sigma1MLE*eye(size(Xtest,2)));
-pxnew2= mvnpdf(Xtest,mu2MLE,sigma2MLE*eye(size(Xtest,2)));
+pxnew1= mvnpdf(Xtest,mu1MLE,(sigma1MLE^2)*eye(size(Xtest,2)));
+pxnew2= mvnpdf(Xtest,mu2MLE,(sigma2MLE^2)*eye(size(Xtest,2)));
 
 P1 = (pxnew1*py1)/(pxnew1*py1 + pxnew2 * py2);
 P2 = (pxnew2*py2)/(pxnew1*py1 + pxnew2 * py2);
