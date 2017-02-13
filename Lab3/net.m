@@ -8,6 +8,7 @@ function net(wd_coefficient, n_hid, n_iters, learning_rate, momentum_multiplier,
     test_gradient(model, datas.training, wd_coefficient);
   end
 
+  %fgf
   % optimization
   theta = model_to_theta(model);
   momentum_speed = theta * 0;
