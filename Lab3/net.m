@@ -135,11 +135,11 @@ function res = grad(model, data, wd_coefficient)
   %% TODO - Write code here ---------------
 
     % Right now the function just returns a lot of zeros. Your job is to change that.
-    res.input_to_hid = model.input_to_hid * 0;
-    res.input_to_hid = transpose((class_prob - data.targets)'* model.hid_to_class).* arrayfun(@(x)(exp(-x))/(1+exp(-x))^2,hid_input)*transpose(data.inputs);
+    res.input_to_hid = model.input_to_hid * wd_coefficient + transpose((class_prob - data.targets)'* model.hid_to_class).* arrayfun(@(x)(exp(-x))/(1+exp(-x))^2,hid_input)*transpose(data.inputs);
+   % res.input_to_hid =  transpose((class_prob - data.targets)'* model.hid_to_class).* arrayfun(@(x)(exp(-x))/(1+exp(-x))^2,hid_input)*transpose(data.inputs);
     %test2 = arrayfun(@(x)(exp(-x))/(1+exp(-x))^2,hid_input);
-    %res.hid_to_class = model.hid_to_class * 0;
-    res.hid_to_class = (class_prob - data.targets) * transpose(hid_output); 
+    res.hid_to_class = model.hid_to_class * wd_coefficient + (class_prob - data.targets) * transpose(hid_output);
+  %  res.hid_to_class = (class_prob - data.targets) * transpose(hid_output); 
   % ---------------------------------------
 end
 
