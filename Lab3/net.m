@@ -115,6 +115,7 @@ function res = cost(model, data, wd_coefficient)
 end
 
 function res = grad(model, data, wd_coefficient)
+
   % model.input_to_hid is a matrix of size <number of hidden units> by <number of inputs i.e. 256>
   % model.hid_to_class is a matrix of size <number of classes i.e. 10> by <number of hidden units>
   % data.inputs is a matrix of size <number of inputs i.e. 256> by <number of data cases>
@@ -135,7 +136,10 @@ function res = grad(model, data, wd_coefficient)
 
     % Right now the function just returns a lot of zeros. Your job is to change that.
     res.input_to_hid = model.input_to_hid * 0;
-    res.hid_to_class = model.hid_to_class * 0;
+    res.input_to_hid = transpose((class_prob - data.targets)'* model.hid_to_class).* arrayfun(@(x)(exp(-x))/(1+exp(-x))^2,hid_input)*transpose(data.inputs);
+    %test2 = arrayfun(@(x)(exp(-x))/(1+exp(-x))^2,hid_input);
+    %res.hid_to_class = model.hid_to_class * 0;
+    res.hid_to_class = (class_prob - data.targets) * transpose(hid_output); 
   % ---------------------------------------
 end
 
