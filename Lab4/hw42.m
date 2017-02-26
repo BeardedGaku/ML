@@ -7,6 +7,7 @@ svmStruct = svmtrain(X,Y,'boxconstraint',1,'showplot', false, 'autoscale',false)
 species = svmclassify(svmStruct, X);
 
 % Calulating the hyperplane
+svi = svmStruct.SupportVectorIndices;
 w1 = dot(svmStruct.Alpha, X(svi,1));
 w2 = dot(svmStruct.Alpha, X(svi,2));
 bias = svmStruct.Bias;
@@ -24,8 +25,7 @@ gscatter(X(:,1),X(:,2),Y,'br','x',7);
 scatter(X(Y~=species,1),X(Y~=species,2),80,'go');
 
 % Marking the support vectors
-svi = svmStruct.SupportVectorIndices;
-scatter(X(svi,1),X(svi,2),particleSize,'k+');
+scatter(X(svi,1),X(svi,2),40,'k+');
 
 % Plotting the hyperplane
 x = linspace(min(X(:,1)),max(X(:,1)),1000);
