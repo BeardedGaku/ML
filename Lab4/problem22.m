@@ -1,12 +1,11 @@
 clear all; close all; clc;
 load d2.mat;
 
-showPlots = true;
+showPlots = false;
 savePlots = false;
 
 k = 5;
 kernel_functions = {'linear', 'quadratic', 'rbf'};
-%kernel_functions = {'rbf'};
 errors = zeros(3,2);
 times = zeros(3,2);
 
