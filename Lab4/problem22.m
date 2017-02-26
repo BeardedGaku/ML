@@ -1,14 +1,18 @@
 clear all; close all; clc;
 load d2.mat;
+
+showPlots = true;
+savePlots = false;
+
 k = 5;
 kernel_functions = {'linear', 'quadratic', 'rbf'};
 %kernel_functions = {'rbf'};
 errors = zeros(3,2);
 times = zeros(3,2);
 
-for i = 1:size(kernel_functions)
-    [errors(i,1), times(i,1)] = kFoldAccuracyTime(X, Y, k, kernel_functions{i}, 'QP', true, true);
-    [errors(i,2), times(i,2)] = kFoldAccuracyTime(X, Y, k, kernel_functions{i}, 'SMO', true, true);
+for i = 1:size(kernel_functions,2)
+    [errors(i,1), times(i,1)] = kFoldAccuracyTime(X, Y, k, kernel_functions{i}, 'QP', showPlots, savePlots);
+    [errors(i,2), times(i,2)] = kFoldAccuracyTime(X, Y, k, kernel_functions{i}, 'SMO', showPlots, savePlots);
 end
 
 %% 

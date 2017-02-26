@@ -11,6 +11,8 @@ switch nargin
         save_img  = varargin{1} && varargin{2};
 end
 
+if (save_img && ~exist('img')) mkdir('img'); end;
+
 classError = 0;
 t = cputime;
 for i=1:5
@@ -32,7 +34,7 @@ for i=1:5
     Y = circshift(Y,binsize,1);
     
     if save_img
-        img_name = [kernel_function, opt_method, num2str(i), '.png'];
+        img_name = ['img\',kernel_function, opt_method, num2str(i), '.png'];
         saveas(fig,img_name);
     end
 end
