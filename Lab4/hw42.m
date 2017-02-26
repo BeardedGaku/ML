@@ -35,4 +35,5 @@ plot(x,f(x),'k');
 legend('Y = 1','Y = -1','missclassified','support vector','hyperplane');
 
 saveas(fig,'hw4-2-1.png');
+%saveas(fig,'hw4-2-2.png');
 hold off;
