@@ -1,4 +1,5 @@
 clear all; close all; clc;
+%Solution of problem 2.2.b
 load d2.mat;
 
 showPlots = false;
@@ -15,6 +16,7 @@ for i = 1:size(kernel_functions,2)
 end
 
 %% 
+%Solution of the problem 2.2.c
 load d2.mat;
 k = 5;
 i = 1;
@@ -27,21 +29,7 @@ ytrain = Y(1:(k-1)*binsize,:);
 
 svmStruct = svmtrain(X,Y,'ShowPlot',true, 'boxconstraint', 1.0, 'autoscale', 'off', 'kernel_function', 'rbf', 'method', 'SMO');
 
-% xtest = X((k-1)*binsize + 1 : size(X,1),:);
-% ytest = Y((k-1)*binsize + 1 : size(Y,1),:);
-% 
-% species = svmclassify(svmStruct,xtest,'ShowPlot',true);
-% find(species - ytest == 0)
-% classError = classError + size(find(species - ytest ~= 0),1)/size(species,1);
-% X = circshift(X,binsize,1);
-% Y = circshift(Y,binsize,1);
-% 
-% %end
-% 
-% classError  = classError / k;
-% %svmStructlin = svmtrain(X,Y,'ShowPlot',true, 'boxconstraint', 0.5, 'kernel_function', 'linear', 'method', 'SMO');
 
-%%
 epsilon = 0.05;
 vectorlistx1 = [];
 vectorlistx2 = [];
@@ -70,6 +58,7 @@ cdata = cat(1,cdata, Y);
 
 figure;
 gscatter(vectorlistx1,vectorlistx2,cdata,'bkr','+.x');
+axes('x1','x2');
 legend('Class 1', 'hyperplane', 'Class 2');
 
 

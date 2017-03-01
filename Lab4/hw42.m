@@ -1,4 +1,5 @@
 clear all; close all; clc;
+%Solution of the problem 2.1
 load d1b.mat;
 
 % ---Calculations----------------------------
