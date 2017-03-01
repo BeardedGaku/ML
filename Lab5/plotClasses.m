@@ -7,10 +7,8 @@ colors = zeros(k,3);
 colors(1,:) = [1 0 0];
 colors(2,:) = [0 0 1];
 
-for i=1:dim1
-cdata(i,:) = colors(zeta(i,:)== 1,:);
-end
+lins = zeta*linspace(1,k,k)';
 
 figure(index);
-scatter(x1,x2,20,cdata);
-
+%scatter(x1,x2,20,cdata);
+gscatter(x1,x2,lins);
