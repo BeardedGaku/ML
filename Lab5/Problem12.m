@@ -25,7 +25,6 @@ cavaleryLike = find(idx==cluster);
 sumCluster = sum(cavaleryLike);
 n0 = (sumCluster * (sumCluster - 1))/2 ;
 
-% kmeans
 [idx] = kmeans(wordembeddings,k, 'Replicates',1);
 newClusters = clusterIdentification(idx,k);
 n1 = 0;
@@ -54,4 +53,7 @@ randomIdx = idx(randomIndexes);
 
 ydata = tsne(randomWords, [], 2, 100, 30);
 
+fig = figure;
 gscatter(ydata(:,1),ydata(:,2),randomIdx,'','+x',4)
+if (~exist('img')) mkdir('img'); end;
+saveas(fig,'img/pointCloud.png');

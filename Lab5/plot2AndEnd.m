@@ -3,16 +3,11 @@ dim1 = size(X,1);
 cdata = zeros(dim1,3);
 x1 = X(:,1);
 x2 = X(:,2);
-colors = zeros(k,3);
-colors(1,:) = [1 0 0];
-colors(2,:) = [0 0 1];
 
-for i=1:dim1
-cdata(i,:) = colors(zeta(i,:)== 1,:);
-end
+lins = zeta*linspace(1,k,k)';
 
-figure(index); hold on;
-scatter(x1,x2,20,cdata);
+fig = figure(index); hold on;
+gscatter(x1,x2,lins,'br','o');
 
 x1vec = [];
 x2vec = [];
@@ -24,3 +19,8 @@ for i=1:dim1
 end
 
 scatter(x1vec,x2vec,40,'k+');
+
+legend('Cluster 1', 'Cluster 2', 'Change of clusters since it. 2')
+
+if (~exist('img')) mkdir('img'); end;
+saveas(fig,'img/it2final.png');

@@ -9,6 +9,9 @@ colors(2,:) = [0 0 1];
 
 lins = zeta*linspace(1,k,k)';
 
-figure(index);
+fig = figure(index);
 %scatter(x1,x2,20,cdata);
 gscatter(x1,x2,lins);
+
+if (~exist('img')) mkdir('img'); end;
+saveas(fig,['img/classplot' num2str(index) '.png']);

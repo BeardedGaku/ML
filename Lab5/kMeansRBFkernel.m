@@ -11,10 +11,10 @@ maxIterations = 1000000;
 iterations = 1;
 costs = [];
 
+kernels = calculationOfKernels(X,sigma);
+
 while(~convergence && iterations < maxIterations)
 %plotClasses(zetaOld,X,k,iterations + 1);
-
-kernels = calculationOfKernels(X,sigma);
 
 zetaNew = dataAssignmentKernel(zetaOld,kernels);
 
