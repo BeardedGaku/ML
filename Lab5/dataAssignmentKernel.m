@@ -1,18 +1,11 @@
-function newZetas = dataAssignmentKernel(zetas,data,sigma)
+function newZetas = dataAssignmentKernel(zetas,kernelsValues)
 
 k = size(zetas,2);
 sizeOFclusters = sum(zetas);
-dim1 = size(data,1);
-kernelsValues = zeros(dim1);
+dim1 = size(kernelsValues,1);
 distances = zeros(dim1,k);
 newZetas = zeros(dim1,k);
 
-for i=1:dim1
-  for j = i:dim1
-    kernelsValues(i,j) = rbfKernel(data(i,:),data(j,:),sigma);
-    kernelsValues(j,i) = kernelsValues(i,j);
-  end
-end
 
 for i = 1:k
     currentZetas = zetas(:,i);
